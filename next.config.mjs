@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config, { isServer }) => {
-    // Handle web workers - optimized configuration
+    // Handle web workers
     config.module.rules.push({
       test: /\.worker\.(js|ts)$/,
       use: {
@@ -9,7 +9,6 @@ const nextConfig = {
         options: {
           filename: 'static/chunks/[id].worker.[contenthash].js',
           publicPath: '/_next/',
-          inline: 'no-fallback',
         },
       },
     });
@@ -18,9 +17,22 @@ const nextConfig = {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
+        canvas: false,
         fs: false,
         path: false,
+      };
+      
+      // Explicitly ignore canvas modules
+      config.module.rules.push({
+        test: /node_modules\/canvas/,
+        use: 'null-loader',
+      });
+      
+      // Prevent importing native Node.js modules
+      config.resolve.alias = {
+        ...config.resolve.alias,
         canvas: false,
+        '../build/Release/canvas.node': false,
       };
     }
 
