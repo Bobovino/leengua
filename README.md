@@ -1,6 +1,6 @@
 MVP
 
-TECNOLOGÍAS: Nextjs,Typescript, Tailwindcss, Xenova/transformers client side
+TECNOLOGÍAS: Nextjs,Typescript, Tailwindcss,
 
 USUARIO ADJUNTA UN LIBRO A LA PÁGINA: Buscándolo en file explorer o con drag and drop.
 
@@ -12,19 +12,15 @@ La app divide el archivo en frases e intercala las frases del idioma original co
 
 1. Cuando se clica traducir:
 2. Se traduce el libro añadiendo al idioma original una traducción al idioma target intercalado
-3. Traducimos con xenova/transformers en cliente con un worker, como se puede ver aquí
+3. Traducimos con rest api en cliente con un worker, como se puede ver aquí
 
-https://github.com/huggingface/transformers.js/blob/main/examples/react-translator/src/App.jsx
-
-https://github.com/huggingface/transformers.js/blob/main/examples/react-translator/src/worker.js
-
-Cuando se le da a traducir, transformers muestra cuantas frases quedan por traducir y su porcentaje sobre el total
+Cuando se le da a traducir, muestra cuantas frases quedan por traducir y su porcentaje sobre el total
 
 Al final, el usuario puede descargar como PDF su libro
 
 # Con más features
 
-TECNOLOGÍAS: Vite react,Typescript, Tailwindcss, Xenova/transformers client side
+TECNOLOGÍAS: Nextjs, Typescript, Tailwindcss, rest api
 
 1. El idioma original del documento se detecta, aunque si se la detección es errónea se puede cambiar en una lista
 2. El idioma target se elige de una lista
@@ -35,11 +31,7 @@ Admite archivos pdf, epub,mobi,txt.
 
 1. Cuando se clica traducir:
 2. Traducimos documentos, generalmente libros añadiendo al idioma original una traducción al idioma target intercalado
-3. Traducimos con xenova/transformers en cliente, como se puede ver aquí
-
-https://github.com/huggingface/transformers.js/blob/main/examples/react-translator/src/App.jsx
-
-https://github.com/huggingface/transformers.js/blob/main/examples/react-translator/src/worker.js
+3. Traducimos con rest api
 
 Con un worker al que llamamos cuando el usuario clica traducir.
 
